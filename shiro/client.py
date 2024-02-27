@@ -1,4 +1,5 @@
 import requests
+from .deployment import DeploymentManager
 
 class ShiroClient:
     def __init__(self, api_key):
