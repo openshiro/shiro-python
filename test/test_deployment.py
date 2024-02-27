@@ -1,38 +1,39 @@
 import unittest
-from unittest.mock import patch
-from shiro.deployment import Deployment
+from unittest.mock import MagicMock
+from shiro.client import ShiroClient
+from shiro.deployment import DeploymentManager
 
-class TestDeployment(unittest.TestCase):
-    @patch('shiro.client.Client.get')
-    def test_list_deployments(self, mock_get):
-        mock_get.return_value = {'deployments': [{'id': '1', 'name': 'Test Deployment'}]}
-        deployments = Deployment.list()
-        self.assertEqual(len(deployments['deployments']), 1)
-        self.assertEqual(deployments['deployments'][0]['name'], 'Test Deployment')
+class TestDeploymentManager(unittest.TestCase):
+    def setUp(self):
+        self.client = ShiroClient(api_key="test_key")
+        self.client.request = MagicMock()
+        self.deployment_manager = DeploymentManager(self.client)
 
-    @patch('shiro.client.Client.get')
-    def test_retrieve_deployment(self, mock_get):
-        mock_get.return_value = {'id': '1', 'name': 'Test Deployment'}
-        deployment = Deployment.retrieve('1')
-        self.assertEqual(deployment['name'], 'Test Deployment')
+    def test_create_deployment(self):
+        data = {"name": "Test Deployment"}
+        self.deployment_manager.create(data)
+        self.client.request.assert_called_with("POST", "deployments", data)
 
-    @patch('shiro.client.Client.post')
-    def test_create_deployment(self, mock_post):
-        mock_post.return_value = {'id': '1', 'name': 'New Deployment'}
-        deployment = Deployment.create({'name': 'New Deployment'})
-        self.assertEqual(deployment['name'], 'New Deployment')
+    def test_retrieve_deployment(self):
+        deployment_id = "123"
+        self.deployment_manager.retrieve(deployment_id)
+        self.client.request.assert_called_with("GET", f"deployments/{deployment_id}")
 
-    @patch('shiro.client.Client.patch')
-    def test_update_deployment(self, mock_patch):
-        mock_patch.return_value = {'id': '1', 'name': 'Updated Deployment'}
-        deployment = Deployment.update('1', {'name': 'Updated Deployment'})
-        self.assertEqual(deployment['name'], 'Updated Deployment')
+    def test_update_deployment(self):
+        deployment_id = "123"
+        data = {"name": "Updated Deployment"}
+        self.deployment_manager.update(deployment_id, data)
+        self.client.request.assert_called_with("PATCH", f"deployments/{deployment_id}", data)
 
-    @patch('shiro.client.Client.delete')
-    def test_delete_deployment(self, mock_delete):
-        mock_delete.return_value = {'message': 'Deployment deleted'}
-        response = Deployment.delete('1')
-        self.assertEqual(response['message'], 'Deployment deleted')
+    def test_delete_deployment(self):
+        deployment_id = "123"
+        self.deployment_manager.delete(deployment_id)
+        self.client.request.assert_called_with("DELETE", f"deployments/{deployment_id}")
+
+    def test_list_deployments(self):
+        self.deployment_manager.list()
+        self.client.request.assert_called_with("GET", "deployments")
 
 if __name__ == '__main__':
     unittest.main()
+

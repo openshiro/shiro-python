@@ -1,32 +1,24 @@
-from shiro.client import Client
+class DeploymentManager:
+    def __init__(self, client):
+        self.client = client
 
-class Deployment:
-    def __init__(self):
-        self.client = Client()
+    def create(self, data):
+        """Create a new deployment."""
+        return self.client.request("POST", "deployments", data)
 
-    @classmethod
-    def list(cls):
-        response = cls.client.get("/deployments")
-        return response.json()
+    def retrieve(self, deployment_id):
+        """Retrieve a specific deployment by its ID."""
+        return self.client.request("GET", f"deployments/{deployment_id}")
 
-    @classmethod
-    def retrieve(cls, deployment_id):
-        response = cls.client.get(f"/deployments/{deployment_id}")
-        return response.json()
+    def update(self, deployment_id, data):
+        """Update a specific deployment."""
+        return self.client.request("PATCH", f"deployments/{deployment_id}", data)
 
-    @classmethod
-    def create(cls, name, **kwargs):
-        payload = {'name': name}
-        payload.update(kwargs)
-        response = cls.client.post("/deployments", body=payload)
-        return response.json()
+    def delete(self, deployment_id):
+        """Delete a specific deployment."""
+        return self.client.request("DELETE", f"deployments/{deployment_id}")
 
-    @classmethod
-    def update(cls, deployment_id, **kwargs):
-        response = cls.client.patch(f"/deployments/{deployment_id}", body=kwargs)
-        return response.json()
+    def list(self):
+        """List all deployments."""
+        return self.client.request("GET", "deployments")
 
-    @classmethod
-    def delete(cls, deployment_id):
-        response = cls.client.delete(f"/deployments/{deployment_id}")
-        return response
