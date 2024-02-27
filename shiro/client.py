@@ -21,8 +21,8 @@ class Client:
         response = requests.post(f"{self.base_url}/{path}", json=data, headers=self.get_headers())
         return response.json()
 
-    def put(self, path, data):
-        response = requests.put(f"{self.base_url}/{path}", json=data, headers=self.get_headers())
+    def patch(self, path, data):
+        response = requests.patch(f"{self.base_url}/{path}", json=data, headers=self.get_headers())
         return response.json()
 
     def delete(self, path):
