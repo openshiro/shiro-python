@@ -1,22 +1,25 @@
+import os
 import unittest
-from unittest.mock import MagicMock
 from shiro.client import ShiroClient
 from shiro.generate_completion import GenerateCompletion
+from test_helper import setup_vcr
 
 class TestGenerateCompletion(unittest.TestCase):
     def setUp(self):
-        self.client = ShiroClient(api_key="test_key")
-        self.client.request = MagicMock()
+        self.client = ShiroClient(api_key=os.environ.get("SHIRO_API_KEY"))
         self.generate_completion = GenerateCompletion(self.client)
 
-    def test_create_deployment(self):
+    @setup_vcr().use_cassette('generate_completion_create.yml')
+    def test_create_generates_completion(self):
         data = {
-                "environment": "PRODUCTION",
-                "prompt_id": "prmt_123",
-                "input_variables": { "review_text": "I loved the movie." }
+            "deployment_id": os.environ.get('SHIRO_DEPLOYMENT_ID'),
+            "environment": "PRODUCTION",
+            "prompt_id": os.environ.get("SHIRO_PROMPT_ID"),
+            "input_variables": {"review_text": "I loved the movie."}
         }
-        self.generate_completion.create(data)
-        self.client.request.assert_called_with("POST", "generate_completion", data)
+        response = self.generate_completion.create(data)
+        self.assertTrue('content' in response, "Expected response to include 'content'")
+        # Add more detailed assertions as needed based on the expected structure and content of the response
 
 if __name__ == '__main__':
     unittest.main()
