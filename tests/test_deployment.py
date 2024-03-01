@@ -1,13 +1,13 @@
 import unittest
 from unittest.mock import MagicMock
 from shiro.client import ShiroClient
-from shiro.deployment import DeploymentManager
+from shiro.deployment import Deployment
 
-class TestDeploymentManager(unittest.TestCase):
+class TestDeployment(unittest.TestCase):
     def setUp(self):
         self.client = ShiroClient(api_key="test_key")
         self.client.request = MagicMock()
-        self.deployment_manager = DeploymentManager(self.client)
+        self.deployment_manager = Deployment(self.client)
 
     def test_list_deployments(self):
         self.deployment_manager.list()

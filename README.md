@@ -11,7 +11,7 @@ See the [API docs](https://openshiro.com/api/v1/docs) and also this post on [Get
 ## Usage
 
 ````
-from shiro_client import ShiroClient
+from shiro import ShiroClient
 
 # Initialize the client with your API key
 client = ShiroClient("your_api_key_here")

@@ -1,15 +1,15 @@
 import unittest
 from unittest.mock import MagicMock
 from shiro.client import ShiroClient
-from shiro.prompt import PromptManager
+from shiro.prompt import Prompt
 
-class TestDeploymentManager(unittest.TestCase):
+class TestPrompt(unittest.TestCase):
     def setUp(self):
         self.client = ShiroClient(api_key="test_key")
         self.client.request = MagicMock()
-        self.prompt_manager = PromptManager(self.client)
+        self.prompt_manager = Prompt(self.client)
 
-    def test_list_deployments(self):
+    def test_list_prompts(self):
         self.prompt_manager.list()
         self.client.request.assert_called_with("GET", "prompts")
 

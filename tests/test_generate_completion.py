@@ -1,13 +1,13 @@
 import unittest
 from unittest.mock import MagicMock
 from shiro.client import ShiroClient
-from shiro.generate_completion import GenerateCompletionManager
+from shiro.generate_completion import GenerateCompletion
 
-class TestDeploymentManager(unittest.TestCase):
+class TestGenerateCompletion(unittest.TestCase):
     def setUp(self):
         self.client = ShiroClient(api_key="test_key")
         self.client.request = MagicMock()
-        self.generate_completion = GenerateCompletionManager(self.client)
+        self.generate_completion = GenerateCompletion(self.client)
 
     def test_create_deployment(self):
         data = {

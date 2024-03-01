@@ -1,4 +1,4 @@
-class PromptManager:
+class Prompt:
     def __init__(self, client):
         self.client = client
 

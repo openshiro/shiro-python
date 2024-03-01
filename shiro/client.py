@@ -1,5 +1,5 @@
 import requests
-from .deployment import DeploymentManager
+from .deployment import Deployment
 
 class ShiroClient:
     def __init__(self, api_key):
@@ -7,7 +7,7 @@ class ShiroClient:
             raise ValueError("API key not defined")
         self.api_key = api_key
         self.base_url = "https://openshiro.com/api/v1"
-        self.deployments = DeploymentManager(self)
+        self.deployments = Deployment(self)
 
     def request(self, method, path, data=None):
         url = f"{self.base_url}/{path}"

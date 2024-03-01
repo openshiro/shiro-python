@@ -1,4 +1,4 @@
-class DeploymentManager:
+class Deployment:
     def __init__(self, client):
         self.client = client
 
