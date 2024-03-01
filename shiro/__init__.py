@@ -1,9 +1,10 @@
 from .client import ShiroClient
 from .deployment import DeploymentManager
+from .prompt import PromptManager
 # Import other classes as needed
 
 __all__ = [
     "ShiroClient",
     "DeploymentManager",
-    # List other classes you want to expose directly
+    "PromptManager"
 ]
