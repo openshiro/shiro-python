@@ -1,0 +1,72 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://openshiro.com/api/v1/prompts
+  response:
+    body:
+      string: '[{"id":"prmt_qWdKlNznA8bQws61v039e2wk","name":"New hire letter","body":"Write
+        a new hire welcome letter to a new employee whose first name is {{ first_name
+        }}. {{ first_name }} has been hired as a {{ job_title }}. Let them know that
+        their new company email address will be {{ email }}. ","temperature":0.0,"language_model":{"id":"lm_4Rz6y7lNwKRwgSybQMEB1j82","object":"language_model","name":"gpt-4","provider_name":"OpenAI"},"created_at":1706838837,"updated_at":1706838837,"url":"https://openshiro.com/api/v1/prompts/prmt_qWdKlNznA8bQws61v039e2wk"},{"id":"prmt_B2Q3O6anr10rzSr5RMNzqvde","name":"New
+        hire letter fun","body":"Imagine you are a fun writer and write in a light,
+        but still professional manner.  Please write a new hire welcome letter to
+        a new employee whose first name is {{ first_name }}. {{ first_name }} has
+        been hired as a {{ job_title }}. Let them know that their new company email
+        address will be {{ email }}","temperature":0.0,"language_model":{"id":"lm_4Rz6y7lNwKRwgSybQMEB1j82","object":"language_model","name":"gpt-4","provider_name":"OpenAI"},"created_at":1706842288,"updated_at":1706842288,"url":"https://openshiro.com/api/v1/prompts/prmt_B2Q3O6anr10rzSr5RMNzqvde"},{"id":"<SHIRO_PROMPT_ID>","name":"Categorization
+        prompt 1","body":"Categorize the following review as either positive or negative.
+        Respond with one word only, positive or negative. {{ review_text }}","temperature":0.5,"language_model":{"id":"lm_4Rz6y7lNwKRwgSybQMEB1j82","object":"language_model","name":"gpt-4","provider_name":"OpenAI"},"created_at":1707946227,"updated_at":1707946227,"url":"https://openshiro.com/api/v1/prompts/<SHIRO_PROMPT_ID>"}]'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1665'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 01 Mar 2024 06:35:38 GMT
+      Etag:
+      - W/"6c286312298ab48ed557e97b8c1d270b"
+      Nel:
+      - '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1709274939&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=64IXTrJ%2FZmfo8Xq7kn8Zs0Q3X9C2aqC0gzux599lgAE%3D"}]}'
+      Reporting-Endpoints:
+      - heroku-nel=https://nel.heroku.com/reports?ts=1709274939&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=64IXTrJ%2FZmfo8Xq7kn8Zs0Q3X9C2aqC0gzux599lgAE%3D
+      Server:
+      - Cowboy
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Via:
+      - 1.1 vegur
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 75e95136-bbc7-4e52-8159-4552f2e5d442
+      X-Runtime:
+      - '0.035542'
+      X-Xss-Protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

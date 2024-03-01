@@ -21,7 +21,7 @@ class TestDeployment(unittest.TestCase):
     def test_retrieve_deployment(self):
         deployment_id = os.environ.get("SHIRO_DEPLOYMENT_ID")
         response = self.deployment.retrieve(deployment_id)
-        self.assertEqual(deployment_id, response['id'], "The deployment ID should match the requested one")
+        self.assertEqual('<SHIRO_DEPLOYMENT_ID>', response['id'], "The deployment ID should match the requested one")
         self.assertTrue('name' in response, "Expected deployment to have a 'name'")
         self.assertTrue('environment_type' in response, "Expected deployment to have 'environment_type'")
 
