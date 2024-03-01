@@ -4,6 +4,8 @@ Shiro Python Client
 This package provides convenient access to the Shiro API from applications written in the Python language.
 """
 
+__version__ = "0.1.1"
+
 from .client import ShiroClient
 from .deployment import Deployment
 from .prompt import Prompt
