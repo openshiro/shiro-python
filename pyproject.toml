@@ -7,12 +7,17 @@ name = "shiro"
 authors = [{name = "Duncan Miller", email = "python@openshiro.com"}]
 readme = "README.md"
 license = {file = "LICENSE"}
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 dynamic = ["version", "description"]
+
+dependencies = [
+    "requests",
+]
 
 [project.urls]
 Home = "https://github.com/openshiro/shiro-python"
