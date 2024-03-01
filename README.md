@@ -16,33 +16,44 @@ from shiro import ShiroClient
 client = ShiroClient("your_api_key_here")
 ````
 
-### List all deployments
+### Deployment Actions
+
+**List deployments**
+
 ````
 deployments = client.deployments.list()
 ````
 
-### Retrieve a specific deployment
+**Retrieve a single deployment**
+
 ````
 deployment = client.deployments.retrieve("dpmt_lWokJnPAwQCeV2ZWovjG7BNr")
 ````
 
-### Update a deployment
+**Update a deployment**
+
 ````
 update_data = {"name": "Updated Deployment Name"}
 updated_deployment = client.deployments.update("dpmt_lWokJnPAwQCeV2ZWovjG7BNr", update_data)
 ````
 
-### List all prompts
+### Prompt Actions
+
+**List prompts**
+
 ````
 prompts = client.prompts.list()
 ````
 
-### Retrieve a specific prompt
+**Retrieve a specific prompt**
+
 ````
 prompt = client.prompts.retrieve("prmt_9nORYX8zAYHGo2AVQ1a2w03p")
 ````
 
-### Create a new completion
+### Generating Completions
+
+**Generate a completion for a deployment**
 
 ````
 completion_data = {
