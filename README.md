@@ -6,6 +6,12 @@ This is the official [Shiro API](https://openshiro.com/api/v1/docs) Python libra
 
 See the [API docs](https://openshiro.com/api/v1/docs) and also this post on [Getting Started with the Shiro API](https://openshiro.com/docs/getting-started-with-the-shiro-api).
 
+## Installation
+
+To install the package:
+
+`pip install shiro`
+
 ## Usage
 The library needs to be configured with your account's api key which is available in your Shiro account under API Keys.
 
