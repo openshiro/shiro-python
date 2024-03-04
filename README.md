@@ -10,7 +10,9 @@ See the [API docs](https://openshiro.com/api/v1/docs) and also this post on [Get
 
 To install the package:
 
-`pip install shiro`
+```
+pip install shiro
+```
 
 ## Usage
 The library needs to be configured with your account's api key which is available in your Shiro account under API Keys.
